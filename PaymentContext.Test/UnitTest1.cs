@@ -1,18 +1,14 @@
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PaymentContext.Domain.Entities;
-using PaymentContext.Domain.Enums;
-using PaymentContext.Domain.ValueObjects;
 
-namespace PaymentContext.Test
+namespace paymentContext.Test
 {
     [TestClass]
-    public class Tests
+    public class UnitTest1
     {
         [TestMethod]
-        public void teste()
+        public void TestMethod1()
         {
-            
+            Assert.IsTrue(true);
         }
     }
 }

@@ -10,5 +10,7 @@ namespace PaymentContext.Shared.Enteties
             Id = Guid.NewGuid();
         }
         public Guid Id { get; private set; }
+
+        public bool Invalid { get => !IsValid; }
     }
 }
