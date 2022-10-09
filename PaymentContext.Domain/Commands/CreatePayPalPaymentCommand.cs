@@ -1,9 +1,12 @@
-﻿using PaymentContext.Domain.Enums;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
+using PaymentContext.Domain.Enums;
+using PaymentContext.Shared.Commands;
 using System;
 
 namespace PaymentContext.Domain.Commands
 {
-    public class CreatePayPalPaymentCommand
+    public class CreatePayPalPaymentCommand : Notifiable<Notification>, ICommand
     {
         public string FirstName { get;  set; }
         public string LastName { get;  set; }
@@ -25,6 +28,14 @@ namespace PaymentContext.Domain.Commands
         public string PayerDocument { get; set; }
         public EDocumentType PayerDocumentType { get; set; }
         public string PayerEmail { get;  set; }
+
+        public void validate()
+        {
+            AddNotifications(new Contract<Notification>()
+                             .Requires()
+                             .IsNotNullOrEmpty(FirstName, "Name.FirstName", "First name can't be empty.")
+                             .IsNotNullOrEmpty(LastName, "Name.LastName", "Last name can't be empty."));
+        }
 
     }
 }
