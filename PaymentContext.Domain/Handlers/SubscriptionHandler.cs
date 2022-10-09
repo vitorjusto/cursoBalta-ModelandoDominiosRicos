@@ -50,6 +50,9 @@ namespace PaymentContext.Domain.Handlers
 
             AddNotifications(name, doc, email, address, student, subscription, payment);
 
+            if (!IsValid)
+                return new CommandResult(false, "Não foi possivel realizar o cadastro");
+
             _emailService.Send(student.Name.ToString(), student.Email.Address, "Welcome to Balta.io", "Our subscription has been created");
 
 
@@ -85,6 +88,9 @@ namespace PaymentContext.Domain.Handlers
             student.AddSubscription(subscription);
 
             AddNotifications(name, doc, email, address, student, subscription, payment);
+
+            if(!IsValid)
+                return new CommandResult(false, "Não foi possivel realizar o cadastro");
 
             _emailService.Send(student.Name.ToString(), student.Email.Address, "Welcome to Balta.io", "Our subscription has been created");
 
