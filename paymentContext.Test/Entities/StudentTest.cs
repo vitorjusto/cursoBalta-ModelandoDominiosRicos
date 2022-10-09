@@ -56,7 +56,7 @@ namespace paymentContext.Test.Entities
             _subscription.AddPayment(payment);
             _student.AddSubscription(_subscription);
 
-            Assert.IsTrue(_student.Invalid);
+            Assert.IsTrue(_student.IsValid);
         }
     }
 }

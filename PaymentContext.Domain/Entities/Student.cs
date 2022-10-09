@@ -33,7 +33,10 @@ namespace PaymentContext.Domain.Entities
             {
                 if (sub.IsActived)
                     hasSubcriptionsActive = true;
+
             }
+            
+            _subscriptions.Add(subscription);
 
             AddNotifications(new Contract<Notification>()
                              .Requires()
