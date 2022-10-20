@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CefSharp.WinForms;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PaymentContext.Domain.Enums;
 using PaymentContext.Domain.ValueObjects;
 
@@ -34,6 +35,16 @@ namespace PaymentContext.Test.ValuesObjects
         {
             var doc = new Document("12345678901", EDocumentType.CPF);
             Assert.IsTrue(doc.IsValid);
+        }
+
+        [DataTestMethod]
+        [DataRow(true, true)]
+        [DataRow(false, true)]
+        [DataRow(true, false)]
+        [DataRow(false, false)]
+        public void cpf(bool c1,bool c2)
+        {
+            Assert.IsFalse((c1 && c2) && !(c2));
         }
 
     }
